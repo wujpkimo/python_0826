@@ -4,6 +4,7 @@ import math
 center = [0, 0]
 circlefence = [(0, 0)]
 
+
 def drawCircle(action, x, y, flags, userData):
     global center
     global circlefence
@@ -14,10 +15,10 @@ def drawCircle(action, x, y, flags, userData):
         cv2.circle(sourceImage, center[0], 1, (255, 255, 0), 6, cv2.LINE_AA)
     elif action == cv2.EVENT_LBUTTONUP:
         circlefence = [(x, y)]
-        radius = math.sqrt(math.pow(center[0][0] - circlefence[0][0], 2)+
-                           math.pow(center[0][1] - circlefence[0][1],2))
-        cv2.circle(sourceImage, center[0], int(radius), (0,255, 255),2,cv2.LINE_AA)
-        cv2.imshow("window",sourceImage)
+        radius = math.sqrt(math.pow(center[0][0] - circlefence[0][0], 2) +
+                           math.pow(center[0][1] - circlefence[0][1], 2))
+        cv2.circle(sourceImage, center[0], int(radius), (0, 255, 255), 2, cv2.LINE_AA)
+        cv2.imshow("window", sourceImage)
     pass
 
 
