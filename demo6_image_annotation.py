@@ -28,4 +28,27 @@ for i in range(0,20):
              thickness=5, lineType=cv2.LINE_AA)
 
 plt.imshow(copy1[:,:,::-1])
+# plt.show()
+plt.clf()
+copy2 = image1.copy()
+for i in range(0,10):
+    cv2.circle(copy2,(250, 5+70*i),100,(0,0+20*i, 255-20*i),
+               thickness=5+2*i, lineType=cv2.LINE_AA)
+plt.imshow(copy2[:, :, ::-1])
+plt.clf()
+
+copy3 = image1.copy()
+for i in range(0,10):
+    cv2.circle(copy3, (250 + 70*i, 5+70*i), (50+7*i), (0, 0+20*i, 255-20*i),
+               thickness=-1, lineType=cv2.LINE_AA)
+plt.imshow(copy3[:, :, ::-1])
+# plt.show()
+# plt.clf()
+
+copy4 = image1.copy()
+for i in range(0, 10):
+    cv2.ellipse(copy4, (400, 300), (300 - 20 * i, 100 + 40 * i),
+                30, 0, 360, (255, 0, 0),
+                thickness=3, lineType=cv2.LINE_AA)
+plt.imshow(copy4[:, :, ::-1])
 plt.show()
