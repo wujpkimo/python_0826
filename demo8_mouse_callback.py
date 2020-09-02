@@ -34,4 +34,6 @@ while k != 27:
     cv2.putText(sourceImage, 'left click to decide center\n esc to leave, to plot circle',
                 (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
     k = cv2.waitKey(50) & 0xFF
+    if k == ord('c'):
+        sourceImage = dummy.copy()
 cv2.destroyAllWindows()
