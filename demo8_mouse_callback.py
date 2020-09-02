@@ -1,9 +1,12 @@
 import cv2
 import math
 
+import numpy as np
+from PIL import ImageFont, ImageDraw, Image
+
 center = [0, 0]
 circlefence = [(0, 0)]
-
+FONT_PATH = "./fonts/NotoSerifCJK-Regular.ttc"
 
 def drawCircle(action, x, y, flags, userData):
     global center
@@ -31,8 +34,14 @@ cv2.setMouseCallback("window", drawCircle)
 k = 0
 while k != 27:
     cv2.imshow("window", sourceImage)
-    cv2.putText(sourceImage, 'left click to decide center\n esc to leave, to plot circle',
-                (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+    font = ImageFont.truetype(FONT_PATH, 36)
+    image_pil = Image.fromarray(sourceImage)
+    draw = ImageDraw.Draw(image_pil)
+    draw.text((20, 20), '左鍵決定中心點\n esc to leave, to plot circle',
+              font = font, fill=(255, 0, 0, 0))
+    # cv2.putText(sourceImage, '左鍵決定中心點\n esc to leave, to plot circle',
+    #             (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+    sourceImage = np.array(image_pil)
     k = cv2.waitKey(50) & 0xFF
     if k == ord('c'):
         sourceImage = dummy.copy()
