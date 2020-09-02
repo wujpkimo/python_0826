@@ -60,3 +60,14 @@ for i in range(0, 10, 2):
                 thickness=-1, lineType=cv2.LINE_AA)
 plt.imshow(copy5[:, :, ::-1])
 plt.show()
+plt.clf()
+
+copy6 = image1.copy()
+text1 = "Gigabyte"
+cv2.putText(copy6, text1, (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 2,
+            (255, 0, 0), thickness=5, lineType=cv2.LINE_AA)
+cv2.putText(copy6, text1.upper(), (100, 400), cv2.FONT_HERSHEY_SIMPLEX, 2,
+            (0, 255, 0), thickness=5, lineType=cv2.LINE_AA)
+plt.imshow(copy6[:, :, ::-1])
+plt.show()
+
