@@ -51,4 +51,12 @@ for i in range(0, 10):
                 30, 0, 360, (255, 0, 0),
                 thickness=3, lineType=cv2.LINE_AA)
 plt.imshow(copy4[:, :, ::-1])
+# plt.show()
+
+copy5 = image1.copy()
+for i in range(0, 10, 2):
+    cv2.ellipse(copy5, (400, 300), (300 - 20 * i, 100 + 40 * i),
+                0, 36 * i, 360, (255-25*i, 0+25*i, 0),
+                thickness=-1, lineType=cv2.LINE_AA)
+plt.imshow(copy5[:, :, ::-1])
 plt.show()
