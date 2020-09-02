@@ -11,13 +11,13 @@ def drawCircle(action, x, y, flags, userData):
     # print(f"[{action}],[{x}],[{y}]")
     # print(cv2.EVENT_LBUTTONDOWN, cv2.EVENT_LBUTTONUP)
     if action == cv2.EVENT_LBUTTONDOWN:
-        center = [(x, y)]
-        cv2.circle(sourceImage, center[0], 1, (255, 255, 0), 6, cv2.LINE_AA)
+        center = (x, y)
+        cv2.circle(sourceImage, center, 1, (255, 255, 0), 6, cv2.LINE_AA)
     elif action == cv2.EVENT_LBUTTONUP:
-        circlefence = [(x, y)]
-        radius = math.sqrt(math.pow(center[0][0] - circlefence[0][0], 2) +
-                           math.pow(center[0][1] - circlefence[0][1], 2))
-        cv2.circle(sourceImage, center[0], int(radius), (0, 255, 255), 2, cv2.LINE_AA)
+        circlefence = (x, y)
+        radius = math.sqrt(math.pow(center[0] - circlefence[0], 2) +
+                           math.pow(center[1] - circlefence[1], 2))
+        cv2.circle(sourceImage, center, int(radius), (0, 255, 255), 2, cv2.LINE_AA)
         cv2.imshow("window", sourceImage)
     pass
 
@@ -31,5 +31,7 @@ cv2.setMouseCallback("window", drawCircle)
 k = 0
 while k != 27:
     cv2.imshow("window", sourceImage)
+    cv2.putText(sourceImage, 'left click to decide center\n esc to leave, to plot circle',
+                (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
     k = cv2.waitKey(50) & 0xFF
 cv2.destroyAllWindows()
